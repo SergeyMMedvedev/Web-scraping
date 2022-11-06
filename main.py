@@ -1,6 +1,8 @@
+import requests
+import re
 from bs4 import BeautifulSoup
 from headers import HEADERS
-import requests
+
 
 
 BASE_URL = 'https://habr.com'
@@ -19,7 +21,7 @@ def get_links_list(articles):
 
 def keywords_in_text(text):
     for keyword in KEYWORDS:
-        if text.find(keyword) != -1:
+        if re.search(keyword, text, re.IGNORECASE):
             return True
 
 
